@@ -40,7 +40,7 @@ AdminPassword="YourPassword123"
 ```
 
 - REST API はインターネットへ直接公開しないでください（LAN / VPN / リバースプロキシ推奨）。
-- palcord の `palworld.base_url` 例: `http://127.0.0.1:8212/v1/api`
+- palcord の `palworld.base_url` 例: `http://localhost:8212/v1/api`
 - Basic Auth ユーザー名は通常 `admin`、パスワードは `AdminPassword`
 
 ### Discord Bot の設定
@@ -169,7 +169,7 @@ AdminPassword="YourPassword123"
 ```
 
 - Do **not** expose the REST API directly to the public Internet (prefer LAN / VPN / reverse proxy).
-- Example `palworld.base_url`: `http://127.0.0.1:8212/v1/api`
+- Example `palworld.base_url`: `http://localhost:8212/v1/api`
 - Basic Auth username is usually `admin`; password is `AdminPassword`
 
 ### Discord Bot setup
