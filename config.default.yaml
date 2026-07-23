@@ -1,0 +1,28 @@
+# Palcord 設定テンプレート
+# 初回起動時に config.yaml へコピーされます。値を編集してから再起動してください。
+
+discord:
+  # Discord Bot トークン（Developer Portal で取得）
+  token: ""
+  # 通知・コマンドを使う Discord サーバー（ギルド）ID
+  guild_id: 0
+  # 入退出などの通知を送るチャンネル ID
+  channel_id: 0
+  # 管理コマンド（kick/ban/shutdown 等）を実行できる Discord ユーザー ID
+  admin_ids: []
+
+palworld:
+  # REST API のベース URL（末尾の /v1/api まで含める）
+  base_url: "http://127.0.0.1:8212/v1/api"
+  # Basic Auth ユーザー名（通常は admin）
+  username: "admin"
+  # PalWorldSettings.ini の AdminPassword
+  password: ""
+
+poll:
+  # プレイヤー一覧のポーリング間隔（秒）
+  interval_seconds: 10
+
+topic:
+  # チャンネルトピックのテンプレート（{current} / {max} が置換される）
+  template: "プレイヤー: {current}/{max}"
