@@ -96,8 +96,6 @@ python -m venv .venv
 .venv\Scripts\python.exe -m palcord
 ```
 
-> Cursor / 開発環境側で勝手に venv を作る必要はありません。`start.bat` を使ってください。
-
 ### 機能
 
 - 入室 / 退室 Embed 通知（IP は表示しません）
@@ -111,6 +109,7 @@ python -m venv .venv
 
 | コマンド | 説明 |
 |----------|------|
+| `/help` | 使い方とコマンド一覧 |
 | `/players` | オンラインプレイヤー一覧 |
 | `/info` | サーバー情報 |
 | `/metrics` | FPS・人数・uptime など |
@@ -238,6 +237,7 @@ python -m venv .venv
 
 | Command | Description |
 |---------|-------------|
+| `/help` | Usage and command list |
 | `/players` | Online player list |
 | `/info` | Server info |
 | `/metrics` | FPS, players, uptime, etc. |

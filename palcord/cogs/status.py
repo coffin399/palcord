@@ -30,6 +30,61 @@ class StatusCog(commands.Cog):
         # Bot 参照を保持する
         self.bot = bot
 
+    @app_commands.command(name="help", description="Palcord の使い方とコマンド一覧を表示します")
+    async def help(self, interaction: discord.Interaction) -> None:
+        """ボット紹介とコマンド一覧。"""
+        # ヘルプ Embed を組み立てる
+        embed = discord.Embed(
+            title="Palcord Help",
+            description=(
+                "Palworld サーバー向け Discord 連携ボットです。\n"
+                "REST API 経由で入退出通知・人数表示・サーバー管理ができます。"
+            ),
+            color=discord.Color.blurple(),
+            timestamp=datetime.now(timezone.utc),
+        )
+        # 自動通知の概要
+        embed.add_field(
+            name="自動通知",
+            value=(
+                "・プレイヤー入室 / 退室\n"
+                "・REST API 未到達 / 復旧\n"
+                "・ボット起動時ステータス\n"
+                "・チャンネルトピックの人数表示"
+            ),
+            inline=False,
+        )
+        # 誰でも使えるコマンド
+        embed.add_field(
+            name="一般コマンド",
+            value=(
+                "`/help` — このヘルプ\n"
+                "`/players` — オンラインプレイヤー一覧\n"
+                "`/info` — サーバー情報\n"
+                "`/metrics` — FPS・人数・uptime など\n"
+                "`/settings` — サーバー設定の要約"
+            ),
+            inline=False,
+        )
+        # 管理者限定コマンド
+        embed.add_field(
+            name="管理コマンド（admin_ids のみ）",
+            value=(
+                "`/kick` — キック\n"
+                "`/ban` — BAN\n"
+                "`/unban` — BAN 解除\n"
+                "`/announce` — 全体アナウンス\n"
+                "`/save` — ワールド保存\n"
+                "`/shutdown` — 猶予付きシャットダウン（要 Confirm）\n"
+                "`/stop` — 即時強制停止（要 Confirm）"
+            ),
+            inline=False,
+        )
+        # 補足
+        embed.set_footer(text="管理コマンドは config.yaml の discord.admin_ids で制御されます")
+        # 自分にだけ見えるように送る
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
     @app_commands.command(name="players", description="オンラインプレイヤー一覧を表示します")
     async def players(self, interaction: discord.Interaction) -> None:
         """オンラインプレイヤー一覧。"""
