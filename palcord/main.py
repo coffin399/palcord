@@ -16,6 +16,20 @@ from palcord.config import (
 from palcord.palworld_client import PalworldClient
 
 
+def _configure_stdio() -> None:
+    """Windows コンソールでの日本語文字化けを抑える。"""
+    # UTF-8 再設定（失敗しても起動は継続）
+    for stream in (sys.stdout, sys.stderr):
+        # reconfigure が使える環境だけ調整する
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            try:
+                reconfigure(encoding="utf-8", errors="replace")
+            except Exception:
+                # コンソールによっては失敗するため無視する
+                pass
+
+
 def _configure_logging() -> None:
     """標準ログ設定を適用する。"""
     # INFO 以上をコンソールへ出す
@@ -27,6 +41,8 @@ def _configure_logging() -> None:
 
 def main() -> int:
     """設定を読み込み Bot を起動する。終了コードを返す。"""
+    # コンソール出力の文字化け対策
+    _configure_stdio()
     # ログを初期化する
     _configure_logging()
     logger = logging.getLogger("palcord")
@@ -43,14 +59,15 @@ def main() -> int:
     # 初回コピー直後は編集を促して終了する
     if not config_existed:
         print(
-            "\n[Palcord] config.yaml を作成しました。\n"
-            f"  場所: {CONFIG_PATH}\n\n"
-            "次の項目を編集してから、もう一度 start.bat を実行してください:\n"
+            "\n[Palcord] Created config.yaml\n"
+            f"  Path: {CONFIG_PATH}\n\n"
+            "Edit these fields, then run start.bat again:\n"
             "  - discord.token\n"
             "  - discord.guild_id\n"
             "  - discord.channel_id\n"
-            "  - discord.admin_ids（管理コマンド利用者）\n"
-            "  - palworld.base_url / password\n"
+            "  - discord.admin_ids\n"
+            "  - palworld.base_url / password\n\n"
+            "[Palcord] config.yaml を作成しました。上記を編集してから再実行してください。\n"
         )
         return 0
 
