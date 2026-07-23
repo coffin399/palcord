@@ -8,6 +8,9 @@ Palworld 1.0 サーバー向け Discord 連携ボットです。
 Discord integration bot for Palworld 1.0 dedicated servers.  
 Uses the **REST API only** (**RCON is not supported**).
 
+> **Note (JA):** RCON は非推奨で、近々のアップデートにより RCON は廃止される予定です。Palcord は最初から REST API のみに対応しています。  
+> **Note (EN):** RCON is deprecated and is planned to be removed in an upcoming update. Palcord supports the REST API only from the start.
+
 公式 REST API ドキュメント / Official REST API docs:  
 https://docs.palworldgame.com/ja/category/rest-api
 
@@ -22,6 +25,8 @@ https://docs.palworldgame.com/ja/category/rest-api
 - ボット起動時にステータスを通知
 - チャンネルトピックにオンライン人数を表示
 - スラッシュコマンドで一覧取得・管理操作
+
+> **RCON について:** RCON は非推奨で、近々のアップデートにより RCON は廃止される予定です。そのため本ボットは RCON を使わず、[REST API](https://docs.palworldgame.com/ja/category/rest-api) のみで動作します。
 
 ### 必要条件
 
@@ -150,6 +155,8 @@ python -m venv .venv
 - Notify status on bot startup
 - Show online player count in the channel topic
 - Slash commands for status and admin operations
+
+> **About RCON:** RCON is deprecated and is planned to be removed in an upcoming update. For that reason, this bot does not use RCON and works with the [REST API](https://docs.palworldgame.com/ja/category/rest-api) only.
 
 ### Requirements
 
