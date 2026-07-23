@@ -1,5 +1,7 @@
 # Palcord
 
+![Palcord](https://i.imgur.com/jvc1OHe.png)
+
 Palworld 1.0 サーバー向け Discord 連携ボットです。  
 **REST API のみ**を使用します（**RCON 非対応**）。
 
